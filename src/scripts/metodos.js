@@ -17,7 +17,7 @@ function mapOperation(elemento,i,array){
     return `O numero ${elemento} na posição ${i} veio do array: ${array}`
 }
 
-// console.log(map(numbers,mapOperation))
+console.log(map(numbers,mapOperation))
 
 // Metodo Filter
 
@@ -39,7 +39,7 @@ const filterOperation = (element) =>{
 }
 
 
-// console.log(filter(numbers,filterOperation))
+console.log(filter(numbers,filterOperation))
 
 // Metodo Find
  
@@ -58,7 +58,7 @@ function find(array,callback,elementToFind){
   return undefined
 }
 
-// console.log(find(names,findOperation,'Maria'))
+console.log(find(names,findOperation,'Maria'))
 
 // Metodo Reduce
   function reduce(array, callback){
@@ -72,7 +72,7 @@ function find(array,callback,elementToFind){
     return acumulador + elemento
   }
 
-//   console.log(reduce(numbers))
+  console.log(reduce(numbers))
 
 // Metodo Includes
 
@@ -114,5 +114,5 @@ const IndexOfOperation = (array,elementIndexOf,index)=>{
 }
 
 
-// console.log(IndexOf(names,'Maria',0,IndexOfOperation))
+console.log(IndexOf(names,'Maria',0,IndexOfOperation))
 
