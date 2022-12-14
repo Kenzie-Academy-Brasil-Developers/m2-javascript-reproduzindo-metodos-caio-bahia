@@ -1,59 +1,70 @@
 /*Adicione seu codigo abaixo */
 const numbers = [1,3,7,9,12]
-const names = [joão,maria,jose]
+const names = ['João','Maria','José','Pedro','Jeff','Caio']
 
 
 // Metodo Map
-  function map(array){
+  function map(array, callback){
     let resultado = []
     for(let i = 0;i<array.length;i++){
-        resultado.push(mapOperation(array[i],i,array))
+        resultado.push(callback(array[i],i,array))
     
     }
     return resultado
   }
+
 function mapOperation(elemento,i,array){
     return `O numero ${elemento} na posição ${i} veio do array: ${array}`
 }
 
-// console.log(map(numbers))
+// console.log(map(numbers,mapOperation))
 
 // Metodo Filter
-const filter = (array) => {
-    const filterfilter = [1,10]
-    const output = []
 
-    for(let i = 0;i < array.length;i++){
-        for(let j = 0; j < filterfilter.length; j++){
-            if(array[i] === filterfilter[j]){
-                output.push(array[i])
-            }
-        }
+const filter = (array,callback) =>{
+  const output = []
+  for (let i = 0; i < array.length; i++){
+    if(callback(array[i]) ==  true){
+      output.push(array[i])
     }
-
-    return output
+  }
+  return output
 }
 
-// console.log(filter(numbers))
+const filterOperation = (element) =>{
+  if(element <= 5){
+    return true
+  }
+  return false
+}
+
+
+// console.log(filter(numbers,filterOperation))
 
 // Metodo Find
+ 
 
-function find(array,elemento){
-  for(let i = 0;i<array.length;i++){
-    if(array[i]===  elemento)
-    return array[i]
+const findOperation = (element, index, array) => {
+  if(element === array[index]){
+    return array[index]
   }
-  return "neca de catipiribas"
 }
 
+function find(array,callback,elementToFind){
+  for(let i = 0;i<array.length;i++){
+    if(callback(elementToFind,i,array) !== undefined)
+    return callback(elementToFind,i,array)
+  }
+  return undefined
+}
 
-
+// console.log(find(names,findOperation,'Maria'))
 
 // Metodo Reduce
-  function reduce(array){
+  function reduce(array, callback){
     let resultado = 0
     for(let i = 0;i<array.length;i++){
-        resultado = reduceOperation(resultado,array[i])
+        resultado = callback(resultado,array[i])
     }
     return resultado 
   }
@@ -65,7 +76,7 @@ function find(array,elemento){
 
 // Metodo Includes
 
-function includes(array, elemento){
+function includes(array, elemento, callback){
 
     let output =  false
     for(let i = 0;i<array.length;i++){
@@ -77,16 +88,27 @@ function includes(array, elemento){
 }
 
 // Metodo IndexOf
+const IndexOf = (array,elementIndexOf,inicialPoint,callback)=>{
+  let output = -1
 
-function IndexOfOperation(elemento){
-  return elemento > 10
-}
-
-function IndexOf(array){
-    for(let i = 0;i<array.lenght;i++){
-      if(array[i] > 10)
-      return i
+  if(inicialPoint > array.length){
+    return output
+  }else{
+    for(let i = inicialPoint;i<array.length;i++){
+      if(callback(array,elementIndexOf,i) >= 0){
+        output = callback(array,elementIndexOf,i)
+      }
     }
-    return -1
+
+  }
+  return output
 }
+const IndexOfOperation = (array,elementIndexOf,index)=>{
+  if(elementIndexOf===array[index]){
+    return index
+  }
+}
+
+
+console.log(IndexOf(names,'Maria',0,IndexOfOperation))
 
