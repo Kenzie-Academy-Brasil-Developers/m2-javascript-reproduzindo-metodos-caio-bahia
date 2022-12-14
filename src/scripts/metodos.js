@@ -76,16 +76,20 @@ function find(array,callback,elementToFind){
 
 // Metodo Includes
 
-function includes(array, elemento, callback){
 
-    let output =  false
-    for(let i = 0;i<array.length;i++){
-        if(array[i] == elemento){
-            output = true
-        }
+  const includes = (array,elementoIncludes,inicialPoint) => {
+    let output = false
+    for(let i = inicialPoint;i < array.length;i++ ){
+      if(elementoIncludes == array[i]){
+        output = true
+      }
     }
     return output
-}
+  }
+
+console.log(includes(numbers,7,0))
+
+
 
 // Metodo IndexOf
 const IndexOf = (array,elementIndexOf,inicialPoint,callback)=>{
@@ -110,5 +114,5 @@ const IndexOfOperation = (array,elementIndexOf,index)=>{
 }
 
 
-console.log(IndexOf(names,'Maria',0,IndexOfOperation))
+// console.log(IndexOf(names,'Maria',0,IndexOfOperation))
 
